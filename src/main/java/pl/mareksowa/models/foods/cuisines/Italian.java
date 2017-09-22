@@ -7,22 +7,37 @@ import java.util.List;
 
 public class Italian extends Cuisine {
 
-    public static List<Food> foodList = createItalianCourseMenu();
+    //declare list containing special 'class' foods
+    private List<Food> italianLunchList;
 
-    public Italian(String name, double price, String description, String ingredients) {
+    //singleton model to prevent creating lots of instances of this class in case of multi-user application
+    private static Italian ourInstance = new Italian();
+
+    public static Italian getInstance() {
+        return ourInstance;
+    }
+
+    private Italian() {
+    }
+
+    private Italian(String name, double price, String description, String ingredients) {
         super(name, price, description, ingredients);
     }
 
-    public static List<Food> createItalianCourseMenu(){
-
-        //here we can manage our 'menu'
-        foodList = new ArrayList<>();
-        foodList.add(new Italian("Caponata", 15.19, "soft meal",
+    @Override
+    //this method allow to admin manage our 'menu' (add/remove/set-price)
+    public List<Food> createMainCourseMenu() {
+        italianLunchList = new ArrayList<>();
+        italianLunchList.add(new Italian("Caponata", 15.19, "soft meal",
                 "bread, onion, mushrooms"));
-        foodList.add(new Italian("Focaccia", 9.99, "very-soft meal",
+        italianLunchList.add(new Italian("Focaccia", 9.99, "very-soft meal",
                 "bread, oli-olivine"));
-        return foodList;
+        return italianLunchList;
     }
 
-
+    @Override
+    //from this method user can see what actual menu looks like
+    public List<Food> showMainCourseMenu() {
+        return italianLunchList;
+    }
 }

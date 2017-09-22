@@ -7,23 +7,40 @@ import java.util.List;
 
 public class Polish extends Cuisine{
 
-    public static List<Food> foodList = createPolishCourseMenu();
+    //declare list containing special 'class' foods
+    private List<Food> polishLunchList;
+
+    //singleton model to prevent creating lots of instances of this class in case of multi-user application
+    private static Polish ourInstance = new Polish();
+
+    public static Polish getInstance() {
+        return ourInstance;
+    }
+
+    private Polish() {
+    }
 
     private Polish(String name, double price, String description, String ingredients) {
         super(name, price, description, ingredients);
     }
 
-    public static List<Food> createPolishCourseMenu(){
-
-        //here we can manage our 'menu'
-        foodList = new ArrayList<>();
-        foodList.add(new Polish("Kotlet Schabowy", 25.99, "very good meal",
+    @Override
+    //this method allow to admin manage our 'menu' (add/remove/set-price)
+    public List<Food> createMainCourseMenu() {
+        polishLunchList = new ArrayList<>();
+        polishLunchList.add(new Polish("Kotlet Schabowy", 25.99, "very good meal",
                 "potato, meat"));
-        foodList.add(new Polish("Gulasz", 29.99, "old-fashioned meal",
+        polishLunchList.add(new Polish("Gulasz", 29.99, "old-fashioned meal",
                 "secret"));
-        foodList.add(new Polish("Pierogi Ruskie", 19.25, "simple meal",
+        polishLunchList.add(new Polish("Pierogi Ruskie", 19.25, "simple meal",
                 "cheese, flour, oil"));
-        return foodList;
+        return polishLunchList;
+    }
+
+    @Override
+    //from this method user can see what actual menu looks like
+    public List<Food> showMainCourseMenu() {
+        return polishLunchList;
     }
 
 }
