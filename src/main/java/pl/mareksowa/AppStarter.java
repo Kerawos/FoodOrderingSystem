@@ -1,12 +1,10 @@
 package pl.mareksowa;
 
-import pl.mareksowa.services.OrderingSystem;
+import pl.mareksowa.views.OrderingSystem;
 
 public class AppStarter {
 
     public static void main(String[] args) {
-        //only for start program
-        OrderingSystem orderingSystem = new OrderingSystem();
-        orderingSystem.start();
+        new OrderingSystem().start();
     }
 }

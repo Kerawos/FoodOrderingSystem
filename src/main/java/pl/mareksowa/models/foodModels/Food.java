@@ -1,4 +1,4 @@
-package pl.mareksowa.models.foods;
+package pl.mareksowa.models.foodModels;
 
 import java.util.List;
 

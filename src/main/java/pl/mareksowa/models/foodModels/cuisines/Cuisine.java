@@ -1,9 +1,8 @@
-package pl.mareksowa.models.foods.cuisines;
+package pl.mareksowa.models.foodModels.cuisines;
 
-import pl.mareksowa.models.foods.Food;
-import pl.mareksowa.models.foods.IMainCourseMenuCreator;
+import pl.mareksowa.models.foodModels.Food;
 
-public abstract class Cuisine extends Food implements IMainCourseMenuCreator{
+public abstract class Cuisine extends Food {
 
     //you can creating tons of class containing unique cuisines, after this go to Utils and add it there
     public String description;
